@@ -32,6 +32,14 @@ export default function RootLayout({
          <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
          >
+            {/* <Auth0Provider
+    domain="dev-0j7lmsze0vocviz7.us.auth0.com"
+    clientId="n6WLiEHOe7zZ1TEOy6t4GIKnfxGmnwbt"
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+  ></Auth0Provider> */}
+
             <Provider store={store}>{children}</Provider>
          </body>
       </html>

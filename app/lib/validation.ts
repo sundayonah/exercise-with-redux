@@ -16,3 +16,24 @@ export const UserSchema = z.object({
 });
 
 export type User = z.infer<typeof UserSchema>;
+
+
+   export const convertDataToUser = (
+      formData: Partial<Record<string, unknown>>
+   ): User => {
+      return {
+         firstname:
+            typeof formData.firstname === 'string' ? formData.firstname : '',
+         lastname:
+            typeof formData.lastname === 'string' ? formData.lastname : '',
+         sex:
+            typeof formData.sex === 'string'
+               ? (formData.sex as 'male' | 'female')
+               : 'female',
+
+         age: typeof formData.age === 'number' ? formData.age : 0,
+         id: typeof formData.id === 'number' ? formData.id : undefined,
+         createdAt:
+            typeof formData.createdAt === 'string' ? formData.createdAt : '',
+      };
+   };

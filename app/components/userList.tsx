@@ -37,8 +37,7 @@ const UsersList: React.FC<UsersListProps> = ({ users }) => {
 
    const handleDelete = (userId: number) => {
       if (userId) {
-         console.log(userId, 'user id');
-         dispatch(removeUser(userId)); // Ensure userId is a number
+         dispatch(removeUser(userId));
       } else {
          console.error('Invalid userId:', userId);
       }
@@ -49,11 +48,8 @@ const UsersList: React.FC<UsersListProps> = ({ users }) => {
          <h1 className="text-3xl font-bold text-center mb-8">Users List</h1>
          <ul className="space-y-4">
             {paginatedUsers.length > 0 ? (
-               paginatedUsers.map((user) => (
-                  <li
-                     key={user.id}
-                     className="bg-white shadow-lg rounded-lg p-6"
-                  >
+               paginatedUsers.map((user, i) => (
+                  <li key={i} className="bg-white shadow-lg rounded-lg p-6">
                      <div className="flex justify-between items-center">
                         <div>
                            <h2 className="text-xl font-semibold">
@@ -69,7 +65,7 @@ const UsersList: React.FC<UsersListProps> = ({ users }) => {
                         </div>
                         <button
                            onClick={() => handleDelete(user.id!)}
-                           className="text-red-500 hover:text-red-700"
+                           className="text-red-500 hover:text-red-700 border border-red-700 py-1 px-4 rounded-md"
                         >
                            Delete
                         </button>
